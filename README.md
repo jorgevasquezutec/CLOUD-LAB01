@@ -1,28 +1,31 @@
+## Experimento 1
 
-[H]
-- vm2 estar apagada.
-- VBoxManage modifyvm vm2 --teleporter on --teleporterport 1234 --teleporterpassword password
-- vm2 la prendas , te va aparecer esperando VBox buscar prender comando
-- host tiene que ser tu propia ip.
-- VBoxManage controlvm vm1 teleport --host 192.168.0.16 --port 1234 --password password
+```
+bash live-migration.sh
+```
 
 
-[Script]
-- t=0 prender vm1
-- t=60 ssh al vm1 comando stress-ng --cpu 4 --io 2 --vm 1 --vm-bytes 1G --timeout 15s
-- t=65 ejecutar 
-	VBoxManage modifyvm vm2 --teleporter on --teleporterport 1234 --teleporterpassword password
-	VBoxManage controlvm vm1 teleport --host 192.168.0.16 --port 1234 --password password
-	
-- t=80 ssh al vm2 comando stress-ng --cpu 4 --io 2 --vm 1 --vm-bytes 1G --timeout 15s
-- t=90 ejecutar 
-	VBoxManage modifyvm vm3 --teleporter on --teleporterport 1234 --teleporterpassword password
-	VBoxManage controlvm vm2 teleport --host 192.168.0.16 --port 1234 --password password
-	
+## Experimento 2
 
+```
+bash policy.sh -s mv1 -d mv2
+```
 
+## Otros comandos
 
-           [H]192.168.0.16
+### Monitoreo
 
-[vm1]              [vm2] 
+``` 
+bash resource-monitor -m mv1 
+```
 
+### Estresar
+
+``` 
+bash stress.sh -m mv1
+``` 
+### Cancelar modifyvm teleport off
+
+``` 
+bash teleport.sh -m vm2
+``` 
