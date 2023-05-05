@@ -1,3 +1,6 @@
+Integrantes:
+Jose Adrian Porres Brugue
+Jorge Luis Vasquez Del Aguila
 ## Experimento 1
 
 ```
